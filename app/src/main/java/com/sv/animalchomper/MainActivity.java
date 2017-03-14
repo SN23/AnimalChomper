@@ -1,6 +1,7 @@
 package com.sv.animalchomper;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
@@ -42,70 +43,94 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
 
             // get a random number form 1 to 3
-            int rand = (int) (Math.random() * 3 + 1);
             count++;//
 
+            final View q = v;
 
-            switch (rand) {
-                /**
-                 * rand = 1 means computer is Mouse,
-                 * 2 represents Cat,
-                 * 3 represents Elephant
-                 */
-                case 1:
-                    cpuChoice.setImageResource(R.drawable.mouse);  //Computer chooses mouse
-                    switch (v.getId()) {
-                        case R.id.mouseBTN:   //player chooses mouse
-                            resultTV.setText(R.string.tie);
-                            roundTV.setText(String.valueOf(count));
+            new CountDownTimer(4000, 1000) {
+                int count = 0;
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    if(count==0){
+                        cpuChoice.setImageResource(R.drawable.three);
+                        count++;
+                    }
+                    else if(count==1){
+                        cpuChoice.setImageResource(R.drawable.two);
+                        count++;
+                    }
+                    else if(count==2){
+                        cpuChoice.setImageResource(R.drawable.one);
+                        count++;
+                    }
+                }
+
+                public void onFinish() {
+                    int rand = (int) (Math.random() * 3 + 1);
+                    switch (rand) {
+                        /**
+                         * rand = 1 means computer is Mouse,
+                         * 2 represents Cat,
+                         * 3 represents Elephant
+                         */
+                        case 1:
+                            cpuChoice.setImageResource(R.drawable.mouse);  //Computer chooses mouse
+                            switch (q.getId()) {
+                                case R.id.mouseBTN:   //player chooses mouse
+                                    resultTV.setText(R.string.tie);
+                                    roundTV.setText(String.valueOf(count));
+                                    break;
+                                case R.id.catBTN:  //player chooses cat
+                                    resultTV.setText(R.string.win);
+                                    roundTV.setText(String.valueOf(count));
+                                    break;
+                                case R.id.elephantBTN:  //player chooses elephant
+                                    resultTV.setText(R.string.lose);
+                                    roundTV.setText(String.valueOf(count));
+                                    break;
+                            }
                             break;
-                        case R.id.catBTN:  //player chooses cat
-                            resultTV.setText(R.string.win);
-                            roundTV.setText(String.valueOf(count));
+
+                        case 2:
+                            cpuChoice.setImageResource(R.drawable.cat);  //computer chooses cat
+                            switch (q.getId()) {
+                                case R.id.mouseBTN:
+                                    resultTV.setText(R.string.lose);
+                                    roundTV.setText(String.valueOf(count));
+                                    break;
+                                case R.id.catBTN:
+                                    resultTV.setText(R.string.tie);
+                                    roundTV.setText(String.valueOf(count));
+                                    break;
+                                case R.id.elephantBTN:
+                                    resultTV.setText(R.string.win);
+                                    roundTV.setText(String.valueOf(count));
+                                    break;
+                            }
                             break;
-                        case R.id.elephantBTN:  //player chooses elephant
-                            resultTV.setText(R.string.lose);
-                            roundTV.setText(String.valueOf(count));
+
+                        case 3:
+                            cpuChoice.setImageResource(R.drawable.elephant);  //computer chooses elephant
+                            switch (q.getId()) {
+                                case R.id.mouseBTN:
+                                    resultTV.setText(R.string.win);
+                                    roundTV.setText(String.valueOf(count));
+                                    break;
+                                case R.id.catBTN:
+                                    resultTV.setText(R.string.lose);
+                                    roundTV.setText(String.valueOf(count));
+                                    break;
+                                case R.id.elephantBTN:
+                                    resultTV.setText(R.string.tie);
+                                    roundTV.setText(String.valueOf(count));
+                                    break;
+                            }
                             break;
                     }
-                    break;
+                }
+            }.start();
 
-                case 2:
-                    cpuChoice.setImageResource(R.drawable.cat);  //computer chooses cat
-                    switch (v.getId()) {
-                        case R.id.mouseBTN:
-                            resultTV.setText(R.string.lose);
-                            roundTV.setText(String.valueOf(count));
-                            break;
-                        case R.id.catBTN:
-                            resultTV.setText(R.string.tie);
-                            roundTV.setText(String.valueOf(count));
-                            break;
-                        case R.id.elephantBTN:
-                            resultTV.setText(R.string.win);
-                            roundTV.setText(String.valueOf(count));
-                            break;
-                    }
-                    break;
 
-                case 3:
-                    cpuChoice.setImageResource(R.drawable.elephant);  //computer chooses elephant
-                    switch (v.getId()) {
-                        case R.id.mouseBTN:
-                            resultTV.setText(R.string.win);
-                            roundTV.setText(String.valueOf(count));
-                            break;
-                        case R.id.catBTN:
-                            resultTV.setText(R.string.lose);
-                            roundTV.setText(String.valueOf(count));
-                            break;
-                        case R.id.elephantBTN:
-                            resultTV.setText(R.string.tie);
-                            roundTV.setText(String.valueOf(count));
-                            break;
-                    }
-                    break;
-            }
         }
     }
 }
