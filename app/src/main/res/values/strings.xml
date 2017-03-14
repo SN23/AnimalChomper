@@ -3,4 +3,9 @@
     <string name="tie">Tied!</string>
     <string name="win">Win!</string>
     <string name="lose">Lose!</string>
+    <string name="choose_a_animal">Choose a animal</string>
+    <string name="computer">Computer</string>
+    <string name="result">Result</string>
+    <string name="round">Round</string>
+
 </resources>

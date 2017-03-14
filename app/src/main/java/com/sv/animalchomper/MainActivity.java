@@ -53,17 +53,17 @@ public class MainActivity extends AppCompatActivity {
                  * 3 represents Elephant
                  */
                 case 1:
-                    cpuChoice.setImageResource(R.drawable.mouse);  //computer choose mouse
+                    cpuChoice.setImageResource(R.drawable.mouse);  //Computer chooses mouse
                     switch (v.getId()) {
-                        case R.id.mouseBTN:   //player choose mouse
+                        case R.id.mouseBTN:   //player chooses mouse
                             resultTV.setText(R.string.tie);
                             roundTV.setText(String.valueOf(count));
                             break;
-                        case R.id.catBTN:  //player choose cat
+                        case R.id.catBTN:  //player chooses cat
                             resultTV.setText(R.string.win);
                             roundTV.setText(String.valueOf(count));
                             break;
-                        case R.id.elephantBTN:  //player choose elephant
+                        case R.id.elephantBTN:  //player chooses elephant
                             resultTV.setText(R.string.lose);
                             roundTV.setText(String.valueOf(count));
                             break;
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case 2:
-                    cpuChoice.setImageResource(R.drawable.cat);  //computer choose cat
+                    cpuChoice.setImageResource(R.drawable.cat);  //computer chooses cat
                     switch (v.getId()) {
                         case R.id.mouseBTN:
                             resultTV.setText(R.string.lose);
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case 3:
-                    cpuChoice.setImageResource(R.drawable.elephant);  //computer choose elephant
+                    cpuChoice.setImageResource(R.drawable.elephant);  //computer chooses elephant
                     switch (v.getId()) {
                         case R.id.mouseBTN:
                             resultTV.setText(R.string.win);
