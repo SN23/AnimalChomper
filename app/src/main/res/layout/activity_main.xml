@@ -1,18 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.sv.animalchomper.MainActivity">
 
+    <ImageButton
+        android:id="@+id/mouseBTN"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:background="@drawable/mouse"
+        android:layout_below="@+id/editText"
+        android:layout_alignRight="@+id/editText"
+        android:layout_alignEnd="@+id/editText"
+        android:layout_marginTop="14dp" />
+
+    <ImageButton
+        android:id="@+id/catBTN"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignLeft="@+id/mouseBTN"
+        android:layout_alignStart="@+id/mouseBTN"
+        android:layout_below="@+id/mouseBTN"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/cat" />
+
+    <ImageButton
+        android:id="@+id/elephantBTN"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignLeft="@+id/catBTN"
+        android:layout_alignStart="@+id/catBTN"
+        android:layout_below="@+id/catBTN"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/elephant" />
+
     <TextView
+        android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="45dp"
+        android:layout_marginTop="20dp"
+        android:text="Choose a animal" />
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/editText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="45dp"
+        android:text="Computer" />
+
+    <ImageView
+        android:id="@+id/cpuChoice"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignTop="@+id/catBTN"
+        android:layout_alignLeft="@+id/editText2"
+        android:layout_alignStart="@+id/editText2" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/elephantBTN"
+        android:layout_alignLeft="@+id/cpuChoice"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/cpuChoice"
+        android:layout_marginBottom="60dp"
+        android:text="Result" />
+
+    <TextView
+        android:id="@+id/round"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/elephantBTN"
+        android:layout_alignLeft="@+id/cpuChoice"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/cpuChoice"
+        android:layout_marginBottom="30dp"
+        android:text="Round" />
+
+    <TextView
+        android:id="@+id/resultTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/result" />
+
+    <TextView
+        android:id="@+id/roundTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/round" />
+
+</RelativeLayout>
