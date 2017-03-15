@@ -1,12 +1,16 @@
 package com.sv.animalchomper;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.github.jinatonic.confetti.CommonConfetti;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView resultTV, roundTV;
     int count = 0;
     MyOnClickListener myOnClickListener = new MyOnClickListener();
+
 
 
     @Override
@@ -34,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         mouseBTN.setOnClickListener(myOnClickListener);
         catBTN.setOnClickListener(myOnClickListener);
         elephantBTN.setOnClickListener(myOnClickListener);
+
+
     }
 
 
@@ -83,6 +90,9 @@ public class MainActivity extends AppCompatActivity {
                                 case R.id.catBTN:  //player chooses cat
                                     resultTV.setText(R.string.win);
                                     roundTV.setText(String.valueOf(count));
+                                    CommonConfetti.rainingConfetti((ViewGroup) findViewById(android.R.id.content)
+                                            , new int[] { Color.RED })
+                                            .oneShot();
                                     break;
                                 case R.id.elephantBTN:  //player chooses elephant
                                     resultTV.setText(R.string.lose);
@@ -105,6 +115,9 @@ public class MainActivity extends AppCompatActivity {
                                 case R.id.elephantBTN:
                                     resultTV.setText(R.string.win);
                                     roundTV.setText(String.valueOf(count));
+                                    CommonConfetti.rainingConfetti((ViewGroup) findViewById(android.R.id.content)
+                                            , new int[] { Color.RED })
+                                            .oneShot();
                                     break;
                             }
                             break;
@@ -115,6 +128,9 @@ public class MainActivity extends AppCompatActivity {
                                 case R.id.mouseBTN:
                                     resultTV.setText(R.string.win);
                                     roundTV.setText(String.valueOf(count));
+                                    CommonConfetti.rainingConfetti((ViewGroup) findViewById(android.R.id.content)
+                                            , new int[] { Color.RED })
+                                            .oneShot();
                                     break;
                                 case R.id.catBTN:
                                     resultTV.setText(R.string.lose);
