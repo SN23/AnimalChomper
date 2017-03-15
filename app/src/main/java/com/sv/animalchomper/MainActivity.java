@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
             final View q = v;
 
-            new CountDownTimer(4000, 1000) {
+            new CountDownTimer(2000, 500) {
                 int count = 0;
                 @Override
                 public void onTick(long millisUntilFinished) {
