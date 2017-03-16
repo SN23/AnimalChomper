@@ -72,6 +72,30 @@
         android:layout_alignTop="@+id/catBTN" />
 
     <TextView
+        android:id="@+id/cpuWins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/elephantBTN"
+        android:layout_alignLeft="@+id/cpuChoice"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/cpuChoice"
+        android:layout_marginBottom="120dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/cpu" />
+
+    <TextView
+        android:id="@+id/playerWins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/elephantBTN"
+        android:layout_alignLeft="@+id/cpuChoice"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/cpuChoice"
+        android:layout_marginBottom="90dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/player" />
+
+    <TextView
         android:id="@+id/result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -102,7 +126,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="60dp"
         android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@id/result" />
+        android:layout_toRightOf="@id/result"
+        android:textColor="@color/result" />
 
     <TextView
         android:id="@+id/roundTV"
@@ -112,5 +137,25 @@
         android:layout_marginBottom="30dp"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/round" />
+
+    <TextView
+        android:id="@+id/playerWinsTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="90dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/playerWins"
+        android:textColor="@color/win" />
+
+    <TextView
+        android:id="@+id/cpuWinsTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="120dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/cpuWins"
+        android:textColor="@color/win" />
 
 </RelativeLayout>

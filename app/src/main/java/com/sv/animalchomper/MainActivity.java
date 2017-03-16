@@ -1,6 +1,7 @@
 package com.sv.animalchomper;
 
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -16,10 +17,13 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageButton mouseBTN, catBTN, elephantBTN;
     private ImageView cpuChoice;
-    private TextView resultTV, roundTV;
-    int count = 0;
+    private TextView resultTV, roundTV, playerWinsTV, cpuWinsTV;
+    private MediaPlayer mp_button;
+    private MediaPlayer mp_button2;
+    int round = 0;
+    int cpuWins = 0;
+    int playerWins = 0;
     MyOnClickListener myOnClickListener = new MyOnClickListener();
-
 
 
     @Override
@@ -35,12 +39,20 @@ public class MainActivity extends AppCompatActivity {
 
         resultTV = (TextView) findViewById(R.id.resultTV);
         roundTV = (TextView) findViewById(R.id.roundTV);
+        roundTV.setText(String.valueOf(round));
+
+        playerWinsTV = (TextView) findViewById(R.id.playerWinsTV);
+        cpuWinsTV = (TextView) findViewById(R.id.cpuWinsTV);
+
+        playerWinsTV.setText(String.valueOf(playerWins));
+        cpuWinsTV.setText(String.valueOf(cpuWins));
 
         mouseBTN.setOnClickListener(myOnClickListener);
         catBTN.setOnClickListener(myOnClickListener);
         elephantBTN.setOnClickListener(myOnClickListener);
 
-
+        mp_button = MediaPlayer.create(this, R.raw.fire_crackers);
+        mp_button2 = MediaPlayer.create(this, R.raw.sad_trombone);
     }
 
 
@@ -49,24 +61,20 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 
-            // get a random number form 1 to 3
-            count++;//
-
             final View q = v;
 
             new CountDownTimer(2000, 500) {
                 int count = 0;
+
                 @Override
                 public void onTick(long millisUntilFinished) {
-                    if(count==0){
+                    if (count == 0) {
                         cpuChoice.setImageResource(R.drawable.three);
                         count++;
-                    }
-                    else if(count==1){
+                    } else if (count == 1) {
                         cpuChoice.setImageResource(R.drawable.two);
                         count++;
-                    }
-                    else if(count==2){
+                    } else if (count == 2) {
                         cpuChoice.setImageResource(R.drawable.one);
                         count++;
                     }
@@ -74,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
                 public void onFinish() {
                     int rand = (int) (Math.random() * 3 + 1);
+                    round++;
                     switch (rand) {
                         /**
                          * rand = 1 means computer is Mouse,
@@ -85,18 +94,24 @@ public class MainActivity extends AppCompatActivity {
                             switch (q.getId()) {
                                 case R.id.mouseBTN:   //player chooses mouse
                                     resultTV.setText(R.string.tie);
-                                    roundTV.setText(String.valueOf(count));
+                                    roundTV.setText(String.valueOf(round));
                                     break;
                                 case R.id.catBTN:  //player chooses cat
                                     resultTV.setText(R.string.win);
-                                    roundTV.setText(String.valueOf(count));
+                                    mp_button.start();
+                                    playerWins++;
+                                    playerWinsTV.setText(String.valueOf(playerWins));
+                                    roundTV.setText(String.valueOf(round));
                                     CommonConfetti.rainingConfetti((ViewGroup) findViewById(android.R.id.content)
-                                            , new int[] { Color.RED })
+                                            , new int[]{Color.RED})
                                             .oneShot();
                                     break;
                                 case R.id.elephantBTN:  //player chooses elephant
                                     resultTV.setText(R.string.lose);
-                                    roundTV.setText(String.valueOf(count));
+                                    mp_button2.start();
+                                    cpuWins++;
+                                    cpuWinsTV.setText(String.valueOf(cpuWins));
+                                    roundTV.setText(String.valueOf(round));
                                     break;
                             }
                             break;
@@ -106,17 +121,23 @@ public class MainActivity extends AppCompatActivity {
                             switch (q.getId()) {
                                 case R.id.mouseBTN:
                                     resultTV.setText(R.string.lose);
-                                    roundTV.setText(String.valueOf(count));
+                                    mp_button2.start();
+                                    cpuWins++;
+                                    cpuWinsTV.setText(String.valueOf(cpuWins));
+                                    roundTV.setText(String.valueOf(round));
                                     break;
                                 case R.id.catBTN:
                                     resultTV.setText(R.string.tie);
-                                    roundTV.setText(String.valueOf(count));
+                                    roundTV.setText(String.valueOf(round));
                                     break;
                                 case R.id.elephantBTN:
                                     resultTV.setText(R.string.win);
-                                    roundTV.setText(String.valueOf(count));
+                                    mp_button.start();
+                                    playerWins++;
+                                    playerWinsTV.setText(String.valueOf(playerWins));
+                                    roundTV.setText(String.valueOf(round));
                                     CommonConfetti.rainingConfetti((ViewGroup) findViewById(android.R.id.content)
-                                            , new int[] { Color.RED })
+                                            , new int[]{Color.RED})
                                             .oneShot();
                                     break;
                             }
@@ -127,26 +148,30 @@ public class MainActivity extends AppCompatActivity {
                             switch (q.getId()) {
                                 case R.id.mouseBTN:
                                     resultTV.setText(R.string.win);
-                                    roundTV.setText(String.valueOf(count));
+                                    mp_button.start();
+                                    playerWins++;
+                                    playerWinsTV.setText(String.valueOf(playerWins));
+                                    roundTV.setText(String.valueOf(round));
                                     CommonConfetti.rainingConfetti((ViewGroup) findViewById(android.R.id.content)
-                                            , new int[] { Color.RED })
+                                            , new int[]{Color.RED})
                                             .oneShot();
                                     break;
                                 case R.id.catBTN:
                                     resultTV.setText(R.string.lose);
-                                    roundTV.setText(String.valueOf(count));
+                                    mp_button2.start();
+                                    cpuWins++;
+                                    cpuWinsTV.setText(String.valueOf(cpuWins));
+                                    roundTV.setText(String.valueOf(round));
                                     break;
                                 case R.id.elephantBTN:
                                     resultTV.setText(R.string.tie);
-                                    roundTV.setText(String.valueOf(count));
+                                    roundTV.setText(String.valueOf(round));
                                     break;
                             }
                             break;
                     }
                 }
             }.start();
-
-
         }
     }
 }
